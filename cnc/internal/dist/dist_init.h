@@ -37,6 +37,7 @@
 
 #include <iostream>
 #include <cstdlib> // getenv
+#include <functional>
 #include <cnc/internal/dist/distributor.h>
 #include <cnc/internal/cnc_api.h>
 #include <cnc/internal/dist/factory.h>
@@ -122,7 +123,8 @@ namespace CnC {
         ///   * optimize bcast (e.g. communicate over a tree)
         struct dist_init
         {
-            typedef void (*subscriber_type)();
+            //typedef void (*subscriber_type)();
+            typedef std::function<void()> subscriber_type;
 
             dist_init( subscriber_type subscriber, long flag = 0, bool dist_env = false )
             {

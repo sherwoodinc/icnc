@@ -386,9 +386,10 @@ namespace CnC {
             (*ser) & _msg;
             switch( _msg ) {
             case CT::SINGLE :
-                Tag _tag;
+            {Tag _tag;
                 (*ser) & _tag;
                 this->cancel( _tag, true );
+            }
                 break;
             case CT::ALL :
                 this->cancel_all( true );

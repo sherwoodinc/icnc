@@ -27,7 +27,7 @@
 #ifndef ProdCons_H_ALREADY_INCLUDED
 #define ProdCons_H_ALREADY_INCLUDED
 
-#include <cnc/cnc.h>
+#include <cnc/dist_cnc.h>
 #include <cnc/debug.h>
 
 // Forward declaration of the context class (also known as graph)

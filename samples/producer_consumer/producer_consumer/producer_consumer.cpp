@@ -42,6 +42,9 @@ int Producer::execute(const int & t, ProdCons_context & c ) const
     // i is some function of my_tag_in
     int i = (int)t ;
 
+    for (int j = i; j < 9000000; ++j) value += j;
+    
+
     // Put the valueItem
     c.valueItem.put(i, value);
 
@@ -61,6 +64,8 @@ int Consumer::execute(const int & t, ProdCons_context & c ) const
     // Compute the outItem
     my_t out = value + 3;
 
+    for (int j = i; j < 9000000; ++j) value += j;
+
     // Put the outItem
     c.outItem.put(t, out);
 
@@ -71,12 +76,13 @@ int main(
     int argc,
     char* argv[])
 {
+    CnC::dist_cnc_init<ProdCons_context> init;
     // Create an instance of the context class which defines the graph
     ProdCons_context c;
 
     // User input for the number of instances of (producer) and (consumer)
     // to be executed.  It can be any positive integer.
-    const unsigned int N = 10;
+    const unsigned int N = atoi(argv[1]);
 
     // Put all inItem instances and all prodConsTag instances.
     // Each prodConsTag instance prescribes a "producer" step instance

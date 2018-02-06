@@ -29,7 +29,7 @@ $(TARGETS): %: %.o
 	$(CXX) $(OPT) -o $@ $^ -L$(CNCROOT)/lib/$(ARCH) -lcnc -lrt -ltbb -ltbbmalloc
 
 $(APPNAME)%o: $(APPNAME)%cpp $(HEADERS)
-	$(CXX) -c -I$(CNCROOT)/include $(OPT) -o $@ $<
+	$(CXX) -c -D_DIST_ -I$(CNCROOT)/include $(OPT) -o $@ $<
 
 dist%.o: %.cpp $(HEADERS)
 	$(CXX) -c -D_DIST_ -I$(CNCROOT)/include $(OPT) -o $@ $<
